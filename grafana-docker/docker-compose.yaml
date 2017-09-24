@@ -1,0 +1,17 @@
+version: '2'
+services:
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "80:3000"
+    volumes_from:
+      - grafana-storage
+    env_file:
+      - .env_grafana
+
+  grafana-storage:
+    image: busybox
+    container_name: grafana-storage
+    volumes:
+      - /var/lib/grafana
